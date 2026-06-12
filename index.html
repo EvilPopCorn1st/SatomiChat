@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Chat Overlay</title>
+<title>Chat 800x600</title>
 
 <style>
 *{
@@ -15,29 +15,15 @@
 
 html,
 body{
-    width:1920px;
-    height:1080px;
+    width:800px;
+    height:600px;
     overflow:hidden;
     background:transparent;
 }
 
-#overlay{
-    width:1920px;
-    height:1080px;
-    position:relative;
-    background:transparent;
-}
-
 #chat{
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:1920px;
-    height:250px;
-
-    background:transparent;
+    width:800px;
+    height:600px;
 }
 
 iframe{
@@ -52,10 +38,8 @@ iframe{
 
 <body>
 
-<div id="overlay">
-    <div id="chat">
-        <iframe src="http://127.0.0.1:34116/widget/chat/inline"></iframe>
-    </div>
+<div id="chat">
+    <iframe src="http://127.0.0.1:34116/widget/chat"></iframe>
 </div>
 
 </body>
