@@ -4,56 +4,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transparent Chat Overlay</title>
+<title>Neon Chat Overlay</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html,
-body {
-    width: 1920px;
-    height: 1080px;
-    overflow: hidden;
-    background: transparent;
+body{
+    width:1920px;
+    height:1080px;
+    overflow:hidden;
+    background:transparent;
 }
 
-body {
-    position: relative;
+/* Холст */
+#overlay{
+    position:relative;
+    width:1920px;
+    height:1080px;
+    background:transparent;
 }
 
-/* Контейнер чата */
-#chat {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+/* Нижняя стеклянная панель */
+#chat-container{
+    position:absolute;
+    left:0;
+    bottom:0;
 
-    width: 1920px;
-    height: 50px;
+    width:1920px;
+    height:240px;
 
-    background: transparent;
+    overflow:hidden;
+
+    background:rgba(15,15,25,0.18);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-top:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 -2px 20px rgba(0,255,255,0.08),
+        0 -2px 40px rgba(145,70,255,0.06);
 }
 
-/* Сам чат */
-#chat iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
+/* Неоновая линия сверху */
+#chat-container::before{
+    content:"";
+
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        #00ffff,
+        #9146ff,
+        #ff0050,
+        #00ffff
+    );
+
+    opacity:.9;
+
+    animation:glowLine 6s linear infinite;
 }
+
+/* Чат */
+iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    background:transparent;
+}
+
+@keyframes glowLine{
+    0%{
+        filter:brightness(1);
+    }
+
+    50%{
+        filter:brightness(1.8);
+    }
+
+    100%{
+        filter:brightness(1);
+    }
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div id="chat">
+<div id="overlay">
+
+```
+<div id="chat-container">
+
     <iframe
         src="http://127.0.0.1:34116/widget/chat/inline">
     </iframe>
+
+</div>
+```
+
 </div>
 
 </body>
